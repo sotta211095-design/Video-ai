@@ -120,6 +120,47 @@ body.rec{padding:0;gap:0;background:#000}
 .rec h1,.rec .ctl{display:none}
 .rec .wrap{width:min(100vw,calc(100vh*16/9))}
 .rec .stage{border:0;border-radius:0;box-shadow:none}
+.cam:before,.cam:after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none;animation:blob 10s ease-in-out infinite alternate}
+.cam:before{width:55cqw;height:55cqw;left:-14cqw;top:-24cqw;background:radial-gradient(circle,rgba(255,255,255,.6),transparent 65%)}
+.cam:after{width:50cqw;height:50cqw;right:-12cqw;bottom:-22cqw;background:radial-gradient(circle,rgba(255,90,95,.28),transparent 65%);animation-delay:-4s}
+@keyframes blob{to{translate:5cqw 4cqw;scale:1.15}}
+.lt{position:absolute;right:0;top:3cqw;z-index:12;background:#ffc93c;border:.35cqw solid var(--ink);border-right:0;border-radius:2cqw 0 0 2cqw;padding:.8cqw 2.4cqw;font-weight:800;font-size:2.4cqw;translate:110% 0;transition:translate .5s cubic-bezier(.3,1.4,.5,1)}
+.lt.show{translate:0 0}
+.mkw,.mkd{display:none}
+.stage[data-lg="mk"] .mkw,.stage[data-lg="mk"] .mkd{display:block}
+.stage[data-gy="ny"] .banner.vis{animation:punch .7s cubic-bezier(.3,1.6,.5,1),hue 5s linear infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.stage[data-gy="ny"] .bob{animation-duration:.8s}
+.studio{display:none;margin-top:16px;border:3px solid var(--pgt);border-radius:14px;padding:12px;flex-direction:column;gap:10px}
+.studio.on{display:flex}
+.stxt{font-size:clamp(15px,2.4vw,20px);font-weight:700;line-height:1.35}
+.sb{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.studio button{font:inherit;font-weight:700;border:3px solid var(--pgt);background:transparent;color:var(--pgt);border-radius:12px;min-height:44px;padding:0 14px;cursor:pointer}
+.studio button.rec{background:#ff5a5f;color:#fff;border-color:#ff5a5f}
+.studio button:disabled{opacity:.4}
+.cv .hk,.cv .tg,.cv .tkp{display:none}
+.cv.tk{container-type:inline-size;position:relative;aspect-ratio:9/16;width:min(100%,calc((100vh - 190px)*9/16));min-width:260px;margin:0 auto;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;background:linear-gradient(160deg,#7b5cff,#ff5a8a 60%,#ffb36b);border:4px solid var(--ink);border-radius:20px;overflow:hidden}
+.cv.tk .hk,.cv.tk .tg,.cv.tk .tkp{display:block}
+.hk{text-align:center;color:#fff;padding:0 4cqw}
+.hk b{display:block;font-size:9.5cqw;line-height:1;font-weight:800;text-shadow:.6cqw .6cqw 0 #1d1b2e;-webkit-text-stroke:.3cqw #1d1b2e;paint-order:stroke fill}
+.hk span{display:inline-block;margin-top:2.4cqw;background:#ffc93c;color:#1d1b2e;border:.6cqw solid #1d1b2e;border-radius:3cqw;padding:.6cqw 3cqw;font-size:5.6cqw;font-weight:800;animation:punch .6s cubic-bezier(.3,1.6,.5,1)}
+.cv.tk .stage{width:94%}
+.cv.tk .sub{position:static;translate:none;width:92%;background:transparent;font-size:6.2cqw;font-weight:800;line-height:1.25;color:rgba(255,255,255,.5);text-shadow:.5cqw .5cqw 0 #1d1b2e;padding:0}
+.sub i{font-style:normal}
+.sub i.hl{color:#fff;text-shadow:.5cqw .5cqw 0 #1d1b2e,0 0 2cqw #ffc93c}
+.tg{color:#fff;font-weight:700;font-size:3.4cqw;opacity:.9}
+.tkp{position:absolute;left:0;right:0;top:0;height:1.3cqw;background:rgba(0,0,0,.3)}
+.tkp i{display:block;height:100%;width:0;background:#ffc93c}
+.tkm.rec .wrap{width:min(100vw,calc(100vh*9/16))}
+.tkm.rec .cv.tk{width:100%;border:0;border-radius:0}
+.dots{display:none;gap:2.2cqw;justify-content:center}
+.cv.tk .dots{display:flex}
+.dots i{width:4cqw;height:4cqw;border-radius:50%;background:rgba(255,255,255,.35);border:.5cqw solid #1d1b2e;transition:.3s}
+.dots i.on{background:#ffc93c;scale:1.25}
+.hk b{animation:punch .5s cubic-bezier(.3,1.6,.5,1)}
+.kick{animation:kick .4s cubic-bezier(.3,1.6,.5,1)}
+@keyframes kick{from{scale:1.07}}
+.sub i.k,.sub i.k.hl{color:#ffc93c}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
 </style>
 </head>
@@ -186,7 +227,7 @@ body.rec{padding:0;gap:0;background:#000}
 </div></div>
 
 </div>
-<div class="sub" id="sub"></div><div class="cd" id="cd"></div>
+<div class="sub" id="sub"></div><div class="cd" id="cd"></div><div class="lt" id="lt"></div>
 <div class="start" id="start">
  <div class="char teacher" data-char="t" style="left:5%"></div><div class="char" data-char="r" style="right:5%"></div>
  <div class="t" id="h">JANGAN ASAL<br>NYURUH AI!</div>
@@ -195,10 +236,11 @@ body.rec{padding:0;gap:0;background:#000}
  <div>Nyalakan suara untuk narasi berbahasa Indonesia · ±3 menit</div>
 </div>
 </div>
+<div class="studio" id="sd"><b id="sdn"></b><div class="stxt" id="sdt"></div><div class="sb"><button id="sdp" aria-label="Bagian sebelumnya">⏮</button><button id="sdr">⏺ Rekam</button><button id="sdl">▶ Dengar</button><button id="sdq" aria-label="Bagian berikutnya">⏭</button></div><div class="sb"><label><input type="checkbox" id="sdk"> Pakai suara saya saat memutar</label><button id="sdx">✔ Selesai</button></div><div id="sdm">Baca dengan gaya Anda sendiri, boleh diubah sedikit supaya lebih natural. Beri jeda sebentar sebelum dan sesudah bicara.</div></div>
 <div class="ctl">
  <button id="pv" aria-label="Sebelumnya">⏮</button><button id="pp" aria-label="Putar atau jeda">▶</button><button id="nx" aria-label="Berikutnya">⏭</button>
  <div id="bar" role="progressbar" aria-label="Kemajuan video"><div id="fill"></div></div><span id="tm">0:00</span>
- <select id="vs" aria-label="Pilih suara narasi"></select><select id="sp" aria-label="Kecepatan suara"><option value=".9">Lambat</option><option value="1" selected>Normal</option><option value="1.1">Cepat</option></select><button id="rc" aria-label="Mode rekam layar" style="padding:0 12px">🎬 Mode rekam</button>
+ <select id="vs" aria-label="Pilih suara narasi"></select><select id="sp" aria-label="Kecepatan suara"><option value=".9">Lambat</option><option value="1" selected>Normal</option><option value="1.1">Cepat</option></select><select id="lg" aria-label="Bahasa"><option value="id">🇮🇩 Indonesia</option><option value="mk">🌴 Logat Bugis-Makassar</option></select><select id="gy" aria-label="Gaya"><option value="sa">Santai</option><option value="ny">Nyentrik</option></select><select id="fm2" aria-label="Format video"><option value="tk">📱 TikTok 9:16 · ±1,3 mnt</option><option value="fl">🖥️ Lengkap 16:9 ·3 mnt</option></select><button id="me" aria-label="Rekam suara saya" style="padding:0 12px">🎙️ Suara saya</button><button id="rc" aria-label="Mode rekam layar" style="padding:0 12px">🎬 Mode rekam</button>
  <button id="vo" class="on" aria-pressed="true" aria-label="Narasi suara">🗣️</button><button id="mu" class="on" aria-pressed="true" aria-label="Musik latar">🎵</button>
 </div>
 </div>
@@ -209,7 +251,7 @@ const K='stroke="#1d1b2e" stroke-width="4" stroke-linejoin="round"';
 const SV={
 t:`<svg viewBox="0 0 120 170"><g class="bob"><path d="M22 135Q60 104 98 135L104 170H16Z" fill="#12b5a6" ${K}/><path d="M50 118l10 16 10-16" fill="#fff" ${K}/><circle cx="60" cy="16" r="12" fill="#3b2a20" ${K}/><circle cx="60" cy="62" r="38" fill="#f2b27a" ${K}/><path d="M23 60Q26 20 60 22Q94 20 97 60Q82 38 60 40Q38 38 23 60Z" fill="#3b2a20" ${K}/><circle cx="45" cy="64" r="10" fill="#fff" ${K}/><circle cx="75" cy="64" r="10" fill="#fff" ${K}/><path d="M55 64h10" ${K}/><circle class="pu" cx="45" cy="65" r="3.5"/><circle class="pu" cx="75" cy="65" r="3.5"/><circle cx="34" cy="80" r="5" fill="#ff8a8a" opacity=".6"/><circle cx="86" cy="80" r="5" fill="#ff8a8a" opacity=".6"/><ellipse class="mouth" cx="60" cy="88" rx="8" ry="5" fill="#7a1f2b" ${K}/><text class="sweat" x="92" y="40" font-size="20">💧</text></g></svg>`,
 r:`<svg viewBox="0 0 120 150"><g class="bob"><path d="M60 26V12" ${K}/><circle cx="60" cy="9" r="7" fill="#ff5a5f" ${K}/><rect x="22" y="26" width="76" height="58" rx="20" fill="#4cc3f7" ${K}/><rect x="32" y="36" width="56" height="38" rx="12" fill="#1d1b2e"/><circle cx="48" cy="52" r="7" fill="#7dffd9"/><circle cx="72" cy="52" r="7" fill="#7dffd9"/><path d="M50 65Q60 72 70 65" stroke="#7dffd9" stroke-width="3" fill="none"/><path d="M30 100Q8 110 14 128M90 100Q112 110 106 128" stroke="#1d1b2e" stroke-width="7" fill="none" stroke-linecap="round"/><rect x="30" y="90" width="60" height="50" rx="14" fill="#ffc93c" ${K}/><circle cx="60" cy="115" r="9" fill="#ff5a5f" ${K}/></g></svg>`};
-const EX={t:`<g class="wave"><path d="M96 138Q116 128 114 100" fill="none" stroke="#12b5a6" stroke-width="9" stroke-linecap="round"/><circle cx="114" cy="96" r="8" fill="#f2b27a" ${K}/></g><path d="M36 50q9-6 18 0M66 50q9-6 18 0" fill="none" stroke="#3b2a20" stroke-width="3" stroke-linecap="round"/><ellipse class="bl" cx="45" cy="64" rx="10" ry="10" fill="#f2b27a"/><ellipse class="bl" cx="75" cy="64" rx="10" ry="10" fill="#f2b27a"/>`,r:`<circle class="pl" cx="60" cy="9" r="7" fill="#ff5a5f"/><rect class="bl" x="38" y="44" width="44" height="16" fill="#1d1b2e"/><path d="M30 38Q32 31 41 30" stroke="#fff" stroke-width="4" fill="none" opacity=".7" stroke-linecap="round"/><circle cx="36" cy="66" r="4" fill="#ff8a8a" opacity=".8"/><circle cx="84" cy="66" r="4" fill="#ff8a8a" opacity=".8"/>`};
+const EX={t:`<g class="wave"><path d="M96 138Q116 128 114 100" fill="none" stroke="#12b5a6" stroke-width="9" stroke-linecap="round"/><circle cx="114" cy="96" r="8" fill="#f2b27a" ${K}/></g><path d="M36 50q9-6 18 0M66 50q9-6 18 0" fill="none" stroke="#3b2a20" stroke-width="3" stroke-linecap="round"/><ellipse class="bl" cx="45" cy="64" rx="10" ry="10" fill="#f2b27a"/><ellipse class="bl" cx="75" cy="64" rx="10" ry="10" fill="#f2b27a"/><g class="mkw"><path d="M18 148H102L104 170H16Z" fill="#c1272d" stroke="#1d1b2e" stroke-width="3"/><path d="M26 148L24 170M44 148L42 170M62 148V170M80 148L82 170M98 148L96 170M16 158H104" stroke="#ffc93c" stroke-width="2" fill="none"/></g>`,r:`<circle class="pl" cx="60" cy="9" r="7" fill="#ff5a5f"/><rect class="bl" x="38" y="44" width="44" height="16" fill="#1d1b2e"/><path d="M30 38Q32 31 41 30" stroke="#fff" stroke-width="4" fill="none" opacity=".7" stroke-linecap="round"/><circle cx="36" cy="66" r="4" fill="#ff8a8a" opacity=".8"/><circle cx="84" cy="66" r="4" fill="#ff8a8a" opacity=".8"/>`};
 $$('[data-char]').forEach(e=>e.innerHTML=SV[e.dataset.char].replace('</g></svg>',EX[e.dataset.char]+'</g></svg>'));
 const DC={1:'📚 ✏️ 🍎 💡 ⭐',2:'❓ 💬 ✨ ⚙️ 🧩',3:'🌟 📌 ✨ 💜 🎈',4:'✅ ❌ 💭 📄 ✨',5:'➕ ✨ 🔢 ⭐ 🎯',6:'🎉 🌈 ⭐ ✨ 🎈'};
 $$('.scene').forEach((sc,k)=>{const d=document.createElement('div'),a=DC[k+1].split(' ');d.className='dec';d.innerHTML=Array.from({length:14},(_,i)=>`<span style="left:${(i*83+11)%95}%;top:${(i*47+5)%80}%;font-size:${2.4+i%3}cqw;--d:${6+i%5*2}s;animation-delay:-${i}s">${a[i%5]}</span>`).join('');$('.cam',sc).prepend(d)});
@@ -249,7 +291,7 @@ const B=[
 [6,1,'Guru','Ingat! AI bukan pembaca pikiran. Kalau perintah kita asal-asalan, jangan heran hasilnya ikut asal-asalan!'],
 [6,2,'Narator','Jangan hanya pintar menggunakan AI. Jadilah guru yang pintar memberikan instruksi kepada AI!'],
 [6,3,'Narator','Guru hebat bukan yang sekadar menggunakan AI, tetapi yang tahu cara mengarahkan AI!']];
-const D=B.map(b=>3800+b[3].split(' ').length*430),TOT=D.reduce((a,b)=>a+b,0),CUM=D.map((_,i)=>D.slice(0,i).reduce((a,b)=>a+b,0));
+let D=B.map(b=>3800+b[3].split(' ').length*430),TOT=D.reduce((a,b)=>a+b,0),CUM=D.map((_,i)=>D.slice(0,i).reduce((a,b)=>a+b,0));
 let cur=-1,el=0,playing=false,voice=true,mus=true,tt,ac,mt,n=0;
 const st=$('#st');
 
@@ -273,13 +315,13 @@ function go(i,quiet){
  st.dataset.who=b[2]=='Guru'?'guru':'nar';st.dataset.mood=(b[0]==1&&b[1]==3)?'conf':'';
  if(b[0]==1){const T='Buatkan saya sesuatu yang bagus!';b[1]==2?typeIt(T):($('#typed').textContent=b[1]>2?T:'')}
  if(b[0]==3)$$('#nav i').forEach((e,j)=>e.classList.toggle('on',j==b[1]-1));
- $('#sub').innerHTML=`<b>${b[2]}:</b> ${b[3]}`;
+ $('#sub').innerHTML=`<b>${b[2]}:</b> ${b[3]}`;lt(b,old);
  if(!quiet){tone(660,.1,'sine',.08);setTimeout(()=>tone(990,.12,'sine',.08),90)}
  say(b[3]);upd();
 }
 function upd(){const t=CUM[cur]+Math.min(el,D[cur]);$('#fill').style.width=(t/TOT*100)+'%';const s=Math.floor(t/1000);$('#tm').textContent=`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')} / ${Math.floor(TOT/60000)}:${String(Math.round(TOT/1000)%60).padStart(2,'0')}`}
-function setP(p){playing=p;$('#pp').textContent=p?'⏸':'▶';if(p){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();ac.resume()}catch(e){}say(B[cur][3])}else{sid++;talk(0);try{speechSynthesis.cancel()}catch(e){}}music()}
-setInterval(()=>{if(!playing)return;el+=100;const w=voice,ok=w?(speechDone&&el>=doneAt+800&&el>=2500):el>=D[cur];if(ok||el>=D[cur]+12000){if(cur<B.length-1)go(cur+1);else finish()}else upd()},100);
+function setP(p){playing=p;$('#pp').textContent=p?'⏸':'▶';if(p){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();ac.resume()}catch(e){}say(B[cur][3])}else{sid++;stopMe();talk(0);try{speechSynthesis.cancel()}catch(e){}}music()}
+setInterval(()=>{if(!playing)return;el+=100;const w=voice,ok=w?(speechDone&&el>=doneAt+(SH?350:800)&&el>=(SH?1800:2500)):el>=D[cur];if(ok||el>=D[cur]+12000){if(cur<B.length-1)go(cur+1);else finish()}else upd()},100);
 function finish(){setP(false);$('#h').innerHTML='TERIMA KASIH,<br>BAPAK/IBU GURU!';$('#h2').textContent='Yuk, mulai memberi prompt yang jelas.';$('#go').textContent='↻ Putar ulang';$('#start').style.display='flex'}
 $('#go').onclick=()=>{$('#start').style.display='none';setP(true);go(cur>=B.length-1||cur<0?0:cur)};
 $('#pp').onclick=()=>{if($('#start').style.display!='none'&&cur<0)return $('#go').click();setP(!playing)};
@@ -300,19 +342,74 @@ function blip(t,id){const g=B[cur][2]=='Guru',s=t.replace(/[^a-zA-Z .,!?:]/g,'')
 (function nx(){if(id!=sid)return;if(i>=s.length){talk(0);speechDone=true;doneAt=el;return}
 const c=s[i++].toLowerCase(),vw='aiueo'.includes(c);let d=75;
 if(c==' '){d=55;mouth(.3)}else if('.!?:'.includes(c)){d=340;mouth(.3)}else if(c==','){d=190;mouth(.3)}
-else{if(vw||c.charCodeAt(0)%2){tone((g?330:210)*(1+c.charCodeAt(0)%9*.07),.1,g?'triangle':'square',g?.1:.06)}mouth(vw?1.7:.4)}
+else{if(vw||c.charCodeAt(0)%2){tone(PM()*(g?330:210)*(1+c.charCodeAt(0)%9*.07),.1,g?'triangle':'square',g?.1:.06)}mouth(vw?1.7:.4)}
 bt=setTimeout(nx,d)})()}
-function say(t){const id=++sid;speechDone=false;started=false;clearTimeout(bt);clearTimeout(tw);talk(0);try{speechSynthesis.cancel()}catch(e){}
-if(!voice||!playing)return;
+function say(t){const id=++sid;speechDone=false;started=false;stopMe();clearTimeout(bt);clearTimeout(tw);talk(0);try{speechSynthesis.cancel()}catch(e){}
+if(!voice||!playing)return;if(ME&&REC[cur]){playMe(0);return}
 if(mode!='blip'&&window.speechSynthesis){try{const g=B[cur][2]=='Guru',u=new SpeechSynthesisUtterance(t.replace(/\bAI/g,'A I').replace(/\bSD\b/g,'es de')),V=mode=='auto'?IV[0]:IV.find(x=>x.name==mode);
-if(V){u.voice=V;u.lang=V.lang}else u.lang='id-ID';u.rate=+$('#sp').value*(g?1.04:1);u.pitch=g?1.12:1;
+if(V){u.voice=V;u.lang=V.lang}else u.lang='id-ID';u.rate=+$('#sp').value*(g?1.04:1)*RM();u.pitch=(g?1.12:1)*PM();
 u.onstart=()=>{if(id==sid){started=true;talk(1)}};u.onboundary=()=>{if(id==sid)st.style.setProperty('--mo',.12+Math.random()*.4)};
 u.onend=u.onerror=()=>{if(id==sid&&started){talk(0);speechDone=true;doneAt=el}};speechSynthesis.speak(u);
 tw=setTimeout(()=>{if(id==sid&&!started){try{speechSynthesis.cancel()}catch(e){}blip(t,id)}},1800);return}catch(e){}}
 blip(t,id)}
 $('#vs').onchange=e=>{mode=e.target.value;if(mode!='blip'&&mode!='auto')VO=IV.find(x=>x.name==mode);say(B[cur][3])};
-$('#vo').onclick=e=>{voice=!voice;e.currentTarget.classList.toggle('on',voice);e.currentTarget.setAttribute('aria-pressed',voice);if(voice)say(B[cur][3]);else{sid++;talk(0);try{speechSynthesis.cancel()}catch(x){}}};
+$('#vo').onclick=e=>{voice=!voice;e.currentTarget.classList.toggle('on',voice);e.currentTarget.setAttribute('aria-pressed',voice);if(voice)say(B[cur][3]);else{sid++;stopMe();talk(0);try{speechSynthesis.cancel()}catch(x){}}};
 pick();
+let LG='id',GY='sa';
+const O=B.map(b=>b[3]);
+const M=['Tawwa, AI sekarang pintar sekali mi! Bisa buat soal, materi, gambar, sampai media pembelajaran juga!','Iyye, kuketik dulu perintahnya ya: Buatkan saya sesuatu yang bagus!','Lhooo! Kenapa begini mi hasilnya? AI-nya kah yang kurang pintar, atau saya yang kurang jelas menyuruh?','Masalahnya bukan selalu di AI, Pak, Bu. Bisa jadi di prompt kita ji!','Prompt itu instruksi atau perintah yang kita kasih ke AI. Makin jelas perintahta, makin besar peluang hasilnya sesuai harapan mi.','Menyuruh AI tanpa instruksi jelas itu sama ji seperti menyuruh tukang masak bikin makanan enak, tapi nda dibilang mau makan apa. Bingung mi dia!','Satu, PERAN: AI mau jadi siapa kah? Contohnya, jadilah guru SD yang berpengalaman. Kita tentukan dulu identitas atau keahliannya.','Dua, TUJUAN: mau dapat apa ki? Misalnya, saya mau buat media pembelajaran interaktif. Tentukan hasil akhir yang mauki.','Tiga, KONTEKS: untuk siapa? Media ini untuk anak kelas 5 SD yang masih susah paham materi. Biar AI nda salah sasaran toh!','Empat, TUGAS: apa yang harus dikerja? Jelaskan proses pencernaan makanan dari mulut sampai usus besar. Harus spesifik ki pekerjaannya.','Lima, FORMAT: hasilnya mau bagaimana? Buat dalam bentuk sepuluh slide presentasi interaktif. Bisa juga tabel, modul, soal, video, atau aplikasi.','Enam, BATASAN: apa yang nda boleh dilakukan? Pakai bahasa sederhana, jangan pakai istilah ilmiah yang sulit kalau nda dijelaskan.','Tujuh, KUALITAS: hasil yang bagus itu seperti apa? Pastikan materinya akurat, menarik, ada gambarnya, dan sesuai kemampuan anak-anak.','Ini contoh prompt yang buruk: Buatkan soal IPAS. Pendek sekali, jadi bingung mi itu AI-nya!','Sekarang prompt yang bagus. Ada peran, jumlah soal, kelas, materi, bahasa, bentuk jawaban, kunci, sampai standar kualitas. Lengkap mi!','Lihat mi bedanya! Sekarang AI nda perlu lagi menebak-nebak isi kepalata!','Rumusnya gampang ji diingat: Peran, tambah Tujuan, Konteks, Tugas, Format, Batasan, dan Kualitas, sama dengan prompt yang lebih berkualitas!','Dalam kerjaan guru: guru IPAS SD, buat sepuluh soal pilihan ganda, untuk kelas lima, tentang pencernaan, bahasa sederhana, dan kunci jawaban yang akurat.','Ingat ki! AI bukan pembaca pikiran. Kalau perintahta asal-asalan, jangan heran kalau hasilnya ikut asal-asalan juga!','Jangan cuma pintar pakai AI. Jadilah guru yang pintar kasih instruksi ke AI, Pak, Bu!','Guru hebat bukan cuma yang pakai AI, tapi yang tahu caranya mengarahkan AI!'];
+const PR={id:['Waduh!','Eits, dengar ya!','Jreng jreng!','Ting!','Wow,','Nah, ini dia!','Catat baik-baik ya!'],mk:['Tawwa!','Iyyek!','Aih, dengarki dulu!','Mantap betul!','Alah!','Nah, ini dia ki!','Catatki baik-baik!']},SF={id:['Seru, kan?','Gampang banget!','Ayo lanjut!','Mantap jiwa!'],mk:['Gampang ji!','Seru toh?','Ayo lanjut ki!','Hebat mi!']};
+function compose(i){let t=LG=='mk'?M[i]:O[i];if(GY=='ny')t=PR[LG][i%7]+' '+t+(i%3==0?' '+SF[LG][i%4]:'');return t}
+function RM(){return(GY=='ny'?1.08:1)*(LG=='mk'?1.05:1)*(SH?1.08:1)}
+function PM(){return GY=='ny'?1.18:1}
+function apply(){B.forEach((b,i)=>{b[3]=compose(i);D[i]=3800+b[3].split(' ').length*430});st.dataset.lg=LG;st.dataset.gy=GY;$('#sub').innerHTML=`<b>${B[cur][2]}:</b> ${B[cur][3]}`;say(B[cur][3])}
+$('#lg').onchange=e=>{LG=e.target.value;apply()};$('#gy').onchange=e=>{GY=e.target.value;apply()};
+function lt(b,o){if(o&&o[0]==b[0])return;const e=$('#lt');e.textContent=['Pembukaan lucu','Apa itu prompt?','7 unsur prompt sakti','Prompt buruk vs baik','Rumus prompt sakti','Penutup'][b[0]-1];e.classList.add('show');setTimeout(()=>e.classList.remove('show'),3200)}
+$$('.dec').forEach(d=>d.insertAdjacentHTML('beforeend',['⛵','🌴','🌊','🐟'].map((e,i)=>`<span class="mkd" style="left:${12+i*24}%;top:${70-i*9}%;font-size:3.4cqw;--d:${8+i*2}s">${e}</span>`).join('')));
+let REC=[],ME=false,curA=null,mr=null,ch=[],raf=0,mic=null,db=null;
+function stopMe(){cancelAnimationFrame(raf);if(curA){const a=curA;curA=null;a.onended=null;a.pause()}}
+function playMe(cb){stopMe();const a=new Audio(URL.createObjectURL(REC[cur]));curA=a;
+try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();ac.resume();const s=ac.createMediaElementSource(a),n=ac.createAnalyser();n.fftSize=256;s.connect(n);n.connect(ac.destination);const d=new Uint8Array(n.fftSize);talk(2);
+(function f(){if(curA!==a)return;n.getByteTimeDomainData(d);let m=0;for(const v of d)m=Math.max(m,Math.abs(v-128));mouth(.25+m/128*3.2);raf=requestAnimationFrame(f)})()}catch(e){talk(1)}
+a.onended=()=>{if(curA!==a)return;stopMe();talk(0);speechDone=true;doneAt=el;if(cb)cb()};a.play().catch(()=>{speechDone=true;doneAt=el;talk(0)})}
+function sdUI(){$('#sdn').textContent=`Bagian ${cur+1} dari ${B.length} · sudah terekam ${REC.filter(Boolean).length}/${B.length}`;$('#sdt').textContent=B[cur][3];$('#sdr').textContent=REC[cur]?'⏺ Rekam ulang':'⏺ Rekam';$('#sdr').classList.remove('rec');$('#sdl').disabled=!REC[cur];$('#sdk').checked=ME}
+function save(i){try{db.transaction('v','readwrite').objectStore('v').put(REC[i],KO()+i)}catch(e){}}
+try{const q=indexedDB.open('suara-guru',1);q.onupgradeneeded=()=>q.result.createObjectStore('v');q.onsuccess=()=>{db=q.result;loadRec()}}catch(e){}
+$('#me').onclick=()=>{setP(false);$('#start').style.display='none';if(cur<0)go(0,true);$('#sd').classList.toggle('on');sdUI()};
+$('#sdx').onclick=()=>{stopMe();talk(0);$('#sd').classList.remove('on')};
+$('#sdp').onclick=()=>{stopMe();go(cur-1,true);sdUI()};$('#sdq').onclick=()=>{stopMe();go(cur+1,true);sdUI()};
+$('#sdl').onclick=()=>{if(REC[cur])playMe()};$('#sdk').onchange=e=>{ME=e.target.checked};
+$('#sdr').onclick=async()=>{stopMe();const b=$('#sdr');if(mr&&mr.state=='recording'){mr.stop();return}
+try{mic=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}})}catch(e){$('#sdm').textContent='Mikrofon tidak bisa diakses di sini ('+(e.name||'error')+'). Izinkan mikrofon di browser, atau buka tautan ini langsung di tab browser (bukan di dalam aplikasi).';return}
+ch=[];mr=new MediaRecorder(mic);mr.ondataavailable=e=>ch.push(e.data);mr.onstop=()=>{mic.getTracks().forEach(t=>t.stop());REC[cur]=new Blob(ch,{type:mr.mimeType});save(cur);ME=true;sdUI();$('#sdm').textContent='Tersimpan. Tekan Dengar untuk memeriksa, lalu lanjut ke bagian berikutnya.'};
+mr.start();b.textContent='⏹ Berhenti';b.classList.add('rec')};
+$('#vs').onchange=e=>{mode=e.target.value;if(mode!='blip'&&mode!='auto')VO=IV.find(x=>x.name==mode);ME=false;say(B[cur][3])};
+const FM=B.map(b=>b.slice(0,3));
+const SM=[[1,3,'Guru'],[1,4,'Narator'],[2,2,'Narator'],[3,1,'Narator'],[3,2,'Narator'],[3,3,'Narator'],[3,4,'Narator'],[3,5,'Narator'],[3,6,'Narator'],[3,7,'Narator'],[4,3,'Narator'],[5,1,'Narator'],[6,3,'Narator']];
+const OS=['Stop! Hasil AI-mu ngawur? Jangan salahkan AI dulu! Kuncinya ada di satu hal yang sering dilupakan guru.','Hal itu adalah prompt! Ada tujuh rahasia. Tonton sampai nomor tujuh, itu yang paling sering terlewat!','Prompt itu perintah untuk AI. Perintah asal, hasilnya ikut asal. Seperti menyuruh tukang masak bikin makanan enak, tapi tidak bilang mau makan apa!','Satu, PERAN. AI harus jadi siapa? Misalnya, guru SD berpengalaman.','Dua, TUJUAN. Mau hasil apa? Misalnya, media pembelajaran interaktif.','Tiga, KONTEKS. Untuk siapa? Misalnya, siswa kelas 5 yang kesulitan memahami materi.','Empat, TUGAS. Apa yang dikerjakan? Jelaskan pencernaan dari mulut sampai usus besar.','Lima, FORMAT. Hasilnya seperti apa? Misalnya, sepuluh slide presentasi.','Enam, BATASAN. Apa yang dilarang? Pakai bahasa sederhana, tanpa istilah sulit.','Nomor tujuh, KUALITAS, si penentu! Bilang ke AI standarnya: akurat, menarik, dan sesuai kemampuan siswa. Ini bikin hasilnya naik kelas!','Lihat bedanya! Prompt asal, AI bingung. Prompt sakti, soal rapi lengkap dengan kunci jawaban. Cuma beda cara menyuruhnya!','Rumusnya: Peran, Tujuan, Konteks, Tugas, Format, Batasan, Kualitas. Simpan video ini biar tidak lupa!','Guru hebat bukan yang sekadar pakai AI, tapi yang tahu cara mengarahkannya! Rahasia mana yang paling sering kamu lupa? Tulis nomornya di komentar, lalu follow ya!'];
+const MS=['Stop dulu! Hasil AI-ta ngawur? Jangan langsung salahkan AI! Kuncinya ada di satu hal yang sering dilupa guru.','Itu dia prompt ji! Ada tujuh rahasia. Tonton sampai nomor tujuh, itu yang paling sering terlewat mi!','Prompt itu perintah untuk AI. Kalau perintahta asal, hasilnya ikut asal mi. Sama ji menyuruh tukang masak bikin enak, tapi nda dibilang mau makan apa!','Satu, PERAN. AI mau jadi siapa kah? Misalnya, guru SD berpengalaman.','Dua, TUJUAN. Mau dapat apa ki? Misalnya, media pembelajaran interaktif.','Tiga, KONTEKS. Untuk siapa? Misalnya, anak kelas 5 yang susah paham materi.','Empat, TUGAS. Apa yang dikerja? Jelaskan pencernaan dari mulut sampai usus besar.','Lima, FORMAT. Hasilnya mau bagaimana? Misalnya, sepuluh slide presentasi.','Enam, BATASAN. Apa yang nda boleh? Pakai bahasa sederhana, jangan istilah sulit.','Nomor tujuh, KUALITAS, penentu mi itu! Bilang ke AI standarnya: akurat, menarik, dan sesuai kemampuan anak-anak. Naik kelas mi hasilnya!','Lihat mi bedanya! Prompt asal, bingung mi AI-nya. Prompt sakti, soalnya rapi, ada kunci jawabannya. Cuma beda cara menyuruh ji!','Rumusnya: Peran, Tujuan, Konteks, Tugas, Format, Batasan, Kualitas. Simpan mi video ini biar nda lupa!','Guru hebat bukan cuma yang pakai AI, tapi yang tahu caranya mengarahkan! Rahasia mana yang paling sering kita lupa? Tulis nomornya di komentar, follow ki ya!'];
+let SH=false;
+function KO(){return SH?100:0}
+function loadRec(){REC=[];ME=false;if(db)for(let i=0;i<B.length;i++)db.transaction('v').objectStore('v').get(KO()+i).onsuccess=e=>{if(e.target.result){REC[i]=e.target.result;ME=true;sdUI()}}}
+function compose(i){const L=SH?(LG=='mk'?MS:OS):(LG=='mk'?M:O);let t=L[i];if(GY=='ny')t=PR[LG][i%7]+' '+t+(i%3==0?' '+SF[LG][i%4]:'');return t}
+function apply(){B.forEach((b,i)=>b[3]=compose(i));D=B.map(b=>(SH?2200:3800)+b[3].split(' ').length*(SH?360:430));TOT=D.reduce((a,b)=>a+b,0);CUM=D.map((_,i)=>D.slice(0,i).reduce((a,b)=>a+b,0));st.dataset.lg=LG;st.dataset.gy=GY;if(cur>=0){$('#sub').innerHTML=`<b>${B[cur][2]}:</b> ${B[cur][3]}`;say(B[cur][3])}}
+const cv=document.createElement('div');cv.className='cv';cv.innerHTML='<div class="hk"><b>JANGAN ASAL NYURUH AI!</b><span id="hk2">Kenapa hasil AI ngawur? 🤯</span></div>';$('.wrap').prepend(cv);cv.append(st);
+cv.insertAdjacentHTML('beforeend','<div class="tg">#fyp #AIuntukGuru #PromptAI #GuruHebat</div><div class="tkp"><i id="tkf"></i></div>');
+const HK={1:'Kok hasilnya ngawur? 🤯',2:'Apa itu prompt? 🤖',4:'Prompt jelek vs sakti ⚔️',5:'Rumus sakti! Simpan 🔖',6:'🔔 Follow & simpan ya!'};
+function lt(b,o){if(SH){const e=$('#hk2'),t=b[0]==3?`Rahasia ${b[1]}/7: ${E[b[1]-1][1]}`:HK[b[0]];if(e.textContent!=t){e.textContent=t;e.style.animation='none';e.offsetWidth;e.style.animation=''}return}
+if(o&&o[0]==b[0])return;const e=$('#lt');e.textContent=['Pembukaan lucu','Apa itu prompt?','7 unsur prompt sakti','Prompt buruk vs baik','Rumus prompt sakti','Penutup'][b[0]-1];e.classList.add('show');setTimeout(()=>e.classList.remove('show'),3200)}
+const sb=$('#sub');new MutationObserver(()=>{if(!SH)return;const t=sb.textContent.replace(/^(Guru|Narator):\s*/,'').trim().replace(/\s+/g,' ');if(sb.dataset.w==t)return;sb.dataset.w=t;sb.innerHTML=t.replace(/\S+/g,w=>(/^[A-Z]{4,}[.,!?]?$/.test(w)?'<i class="k">':'<i>')+w+'</i> ')}).observe(sb,{childList:true});
+setInterval(()=>{if(!SH||cur<0)return;const w=$$('#sub i'),f=speechDone?1:Math.min(1,el/Math.max(D[cur]-1800,2500));w.forEach((e,j)=>e.classList.toggle('hl',j<f*w.length+1));$('#tkf').style.width=$('#fill').style.width},120);
+function setFmt(f){SH=f=='tk';stopMe();sid++;try{speechSynthesis.cancel()}catch(e){}talk(0);setP(false);B.length=0;(SH?SM:FM).forEach(m=>B.push([...m,'']));cur=-1;apply();
+cv.classList.toggle('tk',SH);document.body.classList.toggle('tkm',SH);if(SH)cv.insertBefore(sb,$('.tg'));else st.append(sb);
+$('#h').innerHTML='JANGAN ASAL<br>NYURUH AI!';$('#h2').textContent='7 rahasia membuat prompt yang sakti';$('#go').textContent='▶ Mulai nonton';$('#start').style.display='flex';loadRec();go(0,true);setP(false);$('#s1').classList.remove('act')}
+function whoosh(){if(!ac)return;try{const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type='sawtooth';o.frequency.setValueAtTime(180,t);o.frequency.exponentialRampToValueAtTime(1400,t+.28);g.gain.setValueAtTime(.04,t);g.gain.exponentialRampToValueAtTime(.0001,t+.3);o.connect(g);g.connect(ac.destination);o.start();o.stop(t+.3)}catch(e){}}
+function sfx(b){whoosh();if(b[0]==1&&b[1]==3)tone(70,.7,'sine',.25);if(b[0]==3){if(b[1]==7)[523,659,784,1047].forEach(f=>tone(f,.7,'sine',.09));else tone(440*2**((b[1]-1)/6),.25,'sine',.1)}if(b[0]==4)setTimeout(()=>{tone(784,.2,'sine',.1);tone(1047,.45,'sine',.1)},300)}
+const HK2={'1-3':['STOP SALAHKAN AI!','Hasil ngawur? 😱'],'1-4':['ADA 7 RAHASIA','Tonton sampai #7 🤫'],'2-2':['PROMPT = PERINTAH','Asal nyuruh, asal hasil 🍳'],'4-3':['BEDA BANGET!','Prompt asal vs sakti 😮'],'5-1':['RUMUS SAKTI','🔖 Simpan sekarang!'],'6-3':['KOMEN NOMORNYA!','Mana yang sering kamu lupa? 💬']};
+cv.insertBefore(Object.assign(document.createElement('div'),{className:'dots',id:'dots',innerHTML:'<i></i>'.repeat(7)}),st);
+function lt(b,o){sfx(b);if(SH){const k=b[0]+'-'+b[1],h=b[0]==3?[b[1]==7?'RAHASIA #7 ⭐':'RAHASIA #'+b[1],E[b[1]-1][1]+(b[1]==7?' · PALING PENTING!':'')]:(HK2[k]||['JANGAN ASAL NYURUH AI!','']),t=$('.hk b'),s=$('#hk2');t.textContent=h[0];s.textContent=h[1];[t,s].forEach(e=>{e.style.animation='none';e.offsetWidth;e.style.animation=''});$$('#dots i').forEach((d,j)=>d.classList.toggle('on',b[0]>3||(b[0]==3&&j<b[1])));st.classList.remove('kick');void st.offsetWidth;st.classList.add('kick');return}
+if(o&&o[0]==b[0])return;const e=$('#lt');e.textContent=['Pembukaan lucu','Apa itu prompt?','7 unsur prompt sakti','Prompt buruk vs baik','Rumus prompt sakti','Penutup'][b[0]-1];e.classList.add('show');setTimeout(()=>e.classList.remove('show'),3200)}
+$('#fm2').onchange=e=>setFmt(e.target.value);$('#fm2').value='tk';setFmt('tk');
 go(0,true);setP(false);$('#s1').classList.remove('act');
 </script>
 </body>
